@@ -1,0 +1,94 @@
+    /*
+    Flaticon icon font: Flaticon
+    Creation date: 28/02/2019 19:49
+    */
+
+    @font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff2") format("woff2"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+    .flaticon-user:before { content: "\f100"; }
+.flaticon-user-1:before { content: "\f101"; }
+.flaticon-phone:before { content: "\f102"; }
+.flaticon-id-card:before { content: "\f103"; }
+.flaticon-padlock:before { content: "\f104"; }
+.flaticon-network:before { content: "\f105"; }
+.flaticon-bitcoin:before { content: "\f106"; }
+.flaticon-bitcoin-1:before { content: "\f107"; }
+.flaticon-paper-plane:before { content: "\f108"; }
+.flaticon-send:before { content: "\f109"; }
+.flaticon-wallet:before { content: "\f10a"; }
+.flaticon-safe:before { content: "\f10b"; }
+.flaticon-key:before { content: "\f10c"; }
+.flaticon-key-1:before { content: "\f10d"; }
+.flaticon-magnifying-glass:before { content: "\f10e"; }
+.flaticon-search:before { content: "\f10f"; }
+.flaticon-like:before { content: "\f110"; }
+.flaticon-heart:before { content: "\f111"; }
+.flaticon-share:before { content: "\f112"; }
+.flaticon-look:before { content: "\f113"; }
+.flaticon-view:before { content: "\f114"; }
+.flaticon-settings:before { content: "\f115"; }
+.flaticon-settings-1:before { content: "\f116"; }
+.flaticon-share-1:before { content: "\f117"; }
+.flaticon-add:before { content: "\f118"; }
+.flaticon-wallet-1:before { content: "\f119"; }
+.flaticon-dashboard:before { content: "\f11a"; }
+    
+    $font-Flaticon-user: "\f100";
+    $font-Flaticon-user-1: "\f101";
+    $font-Flaticon-phone: "\f102";
+    $font-Flaticon-id-card: "\f103";
+    $font-Flaticon-padlock: "\f104";
+    $font-Flaticon-network: "\f105";
+    $font-Flaticon-bitcoin: "\f106";
+    $font-Flaticon-bitcoin-1: "\f107";
+    $font-Flaticon-paper-plane: "\f108";
+    $font-Flaticon-send: "\f109";
+    $font-Flaticon-wallet: "\f10a";
+    $font-Flaticon-safe: "\f10b";
+    $font-Flaticon-key: "\f10c";
+    $font-Flaticon-key-1: "\f10d";
+    $font-Flaticon-magnifying-glass: "\f10e";
+    $font-Flaticon-search: "\f10f";
+    $font-Flaticon-like: "\f110";
+    $font-Flaticon-heart: "\f111";
+    $font-Flaticon-share: "\f112";
+    $font-Flaticon-look: "\f113";
+    $font-Flaticon-view: "\f114";
+    $font-Flaticon-settings: "\f115";
+    $font-Flaticon-settings-1: "\f116";
+    $font-Flaticon-share-1: "\f117";
+    $font-Flaticon-add: "\f118";
+    $font-Flaticon-wallet-1: "\f119";
+    $font-Flaticon-dashboard: "\f11a";

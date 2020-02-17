@@ -1,0 +1,274 @@
+@media (max-width: 1600px) {
+    .container-fluid {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 1200px) {
+    .body-class {
+        padding-left: 0px;
+    }
+    .left-sidebar {
+        margin-left: -260px;
+    }
+    .left-sidebar.active {
+        margin-left: 0px;
+    }
+    .header-area .container-fluid {
+        padding-left: 15px;
+    }
+    .left-sidebar .close {
+        display: block;
+    }
+    .body-class {
+        padding-left: 0px;
+    }
+    .left-sidebar {
+        margin-left: -260px;
+    }
+    .left-sidebar.active {
+        margin-left: 0px;
+    }
+    .header-area .container-fluid {
+        padding-left: 15px;
+    }
+    .left-sidebar .close {
+        display: block;
+    }
+}
+
+@media (max-width: 1199px) {}
+
+@media (max-width: 1024px) {
+    .single-tab .section-body .nav-pills a {
+        padding: 40px 0;
+    }
+}
+
+
+/* Portrait tablets and medium desktops */
+
+@media (min-width: 992px) and (max-width: 1199px) {}
+
+
+/* Portrait tablets and small desktops */
+
+@media (max-width: 991px) {
+    .plr-110 {
+        padding: 0 65px;
+    }
+    .section-height {
+        min-height: 100%;
+    }
+    .popup .popup-inner .popup-content {
+        padding: 50px 20px;
+    }
+    .dashbord-area .card-lsit .single-card {
+        margin-bottom: 30px;
+    }
+    .profile-page-area .profile-info {
+        padding-left: 0;
+        padding: 0 20px;
+    }
+    .userprofile-area .defoset-withdrow-aera {
+        margin-bottom: 30px;
+    }
+    .from-field-area {
+        padding: 60px 0;
+    }
+    .from-field-area .height-section {
+        height: 100%;
+        padding: 40px 0;
+    }
+    .from-field-area .height-section {
+        min-height: 250px;
+        padding: 50px !important;
+    }
+}
+
+
+/* Landscape phones and portrait tablets */
+
+@media (max-width: 768px) {
+    .table-area .table-responsive .table tbody tr td {
+        padding: 15px 10px;
+        font-size: 14px;
+    }
+    .table-area .table-responsive .table thead tr th {
+        padding: 15px 10px;
+        font-size: 14px;
+    }
+    .single-tab .section-body .nav-pills {
+        padding: 0px 10px;
+    }
+    .page-title .page-title-inner {
+        padding: 20px 20px;
+    }
+    .plr-65 {
+        padding: 0 20px;
+    }
+    .plr-110 {
+        padding: 0 20px;
+    }
+    .dashbord-area .user-details .single-history {
+        padding: 30px 15px 25px 15px;
+    }
+    .form-area form .form-group {
+        margin-top: 30px;
+    }
+    .single-tab .section-body .nav-pills a {
+        padding: 20px 0;
+    }
+    .single-tab .section-body .nav-pills a {
+        font-size: 14px;
+        margin-right: 20px;
+    }
+    .single-tab .section-body .nav-pills a span::before {
+        font-size: 16px;
+    }
+    .from-field-area .height-section {
+        min-height: 250px;
+        padding: 50px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .header-area .header-inner .hader-left .search-area .search-form form .form-group input {
+        width: 100%;
+    }
+    .dashbord-area .user-details .single-history {
+        margin-bottom: 30px;
+    }
+}
+
+
+/* Landscape phones and smaller */
+
+@media (max-width: 480px) {
+    .breadcrumb-area ul li {
+        font-size: 18px;
+        padding: 0 10px;
+    }
+    .header-area .header-inner .header-right .notifications-area .notifications-box {
+        right: -90px;
+        width: 300px;
+        padding: 30px 20px 25px 20px;
+    }
+    .single-tab .section-body .nav-pills a {
+        padding: 20px 0;
+    }
+    .landing-page-area .nav-pills.nav-pill-three a {
+        font-size: 16px;
+        margin-right: 20px;
+    }
+    .single-tab .section-body .nav-pills a {
+        font-size: 16px;
+        margin-right: 20px;
+    }
+    .single-tab .section-body .nav-pills {
+        justify-content: flex-start;
+    }
+    .search-right {
+        margin-top: 10px;
+        display: block;
+        width: 100%;
+    }
+    .page-title .page-title-inner .search-right .form-group input {
+        width: 100%;
+    }
+    .idvarification-area .chart-btn .verifay-btn {
+        padding: 15px 30px;
+        margin: 0 10px;
+    }
+    .idvarification-area .chart-btn {
+        margin-top: 30px;
+    }
+    .profile-page-area .profile-info .table tr td {
+        padding: 20px 20px !important;
+        font-size: 14px;
+    }
+    .from-field-area .form-right .form-areas.code-catification form .form-group input.veryfay {
+        width: 60px;
+    }
+    .from-field-area .from-left .log-arrow {
+        left: 50px;
+        top: 50px;
+    }
+    .from-field-area .form-right .form-areas form .form-group {
+        position: relative;
+        padding-bottom: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .from-field-area .height-section {
+        min-height: 250px;
+        padding: 50px!important;
+    }
+    .from-field-area .form-right.height-section,
+    .from-field-area .height-sectionregister {
+        padding: 50px 0px!important;
+    }
+}
+
+@media (max-width: 375px) {
+    .header-right {
+        order: -1;
+    }
+    .header-area .header-inner .hader-left .menubar-area {
+        position: absolute;
+        right: 15px;
+        top: 25px;
+        margin-right: 0px;
+    }
+    .header-area .header-inner .hader-left .search-area .search-form form .form-group input {
+        min-width: 345px;
+    }
+    .header-area .header-inner .header-right .notifications-area .notifications-box {
+        left: 10px;
+        width: 300px;
+        padding: 30px 20px 25px 20px;
+    }
+    .header-area .header-inner .header-right .notifications-area .notifications-box .box-inner::before {
+        left: 15px;
+    }
+    .dashbord-area .card-lsit .single-card .card-cotnetn h2 {
+        font-size: 20px;
+    }
+    .dashbord-area .user-details .single-history {
+        padding: 30px 0 25px 0;
+    }
+    .dashbord-area .user-details .single-history .section-title h4 {
+        padding-left: 20px;
+    }
+    .profile-page-area .profile-info .table tr td {
+        padding: 20px 3px !important;
+        text-align: center;
+    }
+    .userprofile-area .defoset-withdrow-aera .single-box {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    .userprofile-area .profile-info .table tr td {
+        padding: 10px !important;
+        font-size: 14px;
+    }
+    .from-left.height-section.d-flex.justify-content-center.align-items-center {
+        height: 250px;
+    }
+}
+
+@media (max-width: 320px) {
+    .header-area .header-inner .hader-left .search-area .search-form form .form-group input {
+        min-width: 290px;
+    }
+    .header-area .header-inner .header-right .notifications-area .notifications-box {
+        left: -5px;
+    }
+    .idvarification-area .chart-btn .verifay-btn {
+        margin: 5px 10px;
+    }
+}

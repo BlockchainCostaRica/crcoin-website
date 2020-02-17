@@ -1,0 +1,33 @@
+.metismenu ul li a.active{
+    background-color: #090887 ;
+}
+
+.left-sidebar .left-menu .metismenu li a:hover{
+    background-color: #090887 ;
+    color: #F0F5F8;
+}
+
+.ys{
+    display: inline-block;
+    margin-left: 12px;
+}
+
+tbody tr td ul{
+    display: flex;
+
+    left: 5px;
+
+    justify-content: center;
+}
+tbody tr td ul li{
+    padding: 10px;
+}
+
+tbody tr td ul li a{
+    font-size: 23px;
+}
+
+.custom_icon a img{
+    width: 20px;
+    margin-right: 9px;
+}

@@ -1,0 +1,335 @@
+@media (min-width: 1300px) {}
+
+@media (max-width: 1600px) {
+    .container-fluid {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 1199px) {}
+
+@media (max-width: 1024px) {
+    .profile-page-area .profile-inner .profile-top-menu .tabe-menu .nav-tabs {
+        justify-content: flex-start;
+        padding: 0px 10px;
+    }
+    .profile-page-area .profile-inner .profile-top-menu .tabe-menu .nav-tabs .nav-item .nav-link {
+        padding: 20px 0;
+    }
+    .profile-page-area .profile-inner .profile-top-menu .tabe-menu .nav-tabs .nav-item .nav-link {
+        font-size: 16px;
+        margin-right: 15px;
+    }
+    .profile-page-area .profile-inner .profile-top-menu .tabe-menu .nav-tabs .nav-item .nav-link i::before {
+        font-size: 16px;
+    }
+}
+
+
+/* Portrait tablets and medium desktops */
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .header-area .header-top-area .menu-area .main-menu ul li a {
+        margin-right: 10px;
+        padding: 45px 5px;
+    }
+    .header-area .header-top-area .profile-area ul li a img {
+        margin-right: 2px;
+    }
+    .page-wraper {
+        padding: 30px 20px;
+    }
+}
+
+
+/* Portrait tablets and small desktops */
+
+@media (max-width: 991px) {
+    .header-area .header-top-area .menu-area {
+        display: none;
+    }
+    .header-area .header-top-area .menu-bar {
+        display: block;
+    }
+    .header-area .header-bottom-area .blance-area {
+        float: left;
+        margin-top: 30px;
+    }
+    .wallet-area .wallet-inner .wallet-content .tab-content .tabcontent-right {
+        padding-left: 0;
+        margin-top: 30px;
+    }
+    .profile-page-area .profile-inner .tab-content .idvarification-area .card-type-list .single-card {
+        margin-bottom: 30px;
+    }
+    .refferal-page-area .refferal-page-inner .refferal-title h3 {
+        margin-left: 30px;
+    }
+    .setting-page-area .setting-page-inner .google-authetication {
+        padding: 35px 30px 38px 30px;
+    }
+    .setting-page-area .setting-page-inner .preference-settinga .section-title h3 {
+        margin-left: 30px;
+    }
+    .form-area {
+        padding: 0 30px;
+    }
+    .profile-page-area .profile-inner .tab-content .profile-img-area .uplode-img .inputfile+label {
+        position: absolute;
+        margin-top: 10px;
+        left: 50%;
+         transform: translateX(-50%);
+    }
+    .profile-page-area .profile-inner .tab-content .profile-img-area {
+        margin-bottom: 58px;
+        box-shadow: none;
+    }
+    .idvarification-area {
+        padding: 0 30px;
+    }
+    .profile-page-area .profile-inner .tab-content .activelog-area .activelog-title h4 {
+        margin-left: 30px;
+    }
+    .wallet-area .wallet-inner .wallet-content .tab-content .tabcontent-right {
+        padding: 0 30px;
+    }
+    .footer-area .footer-menu {
+        text-align: left;
+        margin-top: 30px;
+    }
+    .footer-area .footer-menu ul li:first-child a {
+        padding-left: 0px;
+    }
+    .wallet-area .wallet-inner .wallet-content .wallet-top .wallet-title h4 {
+        padding: 30px 0;
+    }
+    .wallet-area .wallet-inner .wallet-content .wallet-top .tabe-menu .nav-tabs .nav-item .nav-link {
+        padding: 30px 0;
+    }
+    table tbody tr td .action-icon a:first-child i:before {
+        margin: 3px 0 3px 20px;
+    }
+    .dashbord-area .dashbord-inner .history-area .single-history {
+        margin-bottom: 30px;
+    }
+    .page-wraper {
+        padding: 50px 50px;
+    }
+    .bye-coin-from .form-area {
+        padding: 0px;
+    }
+    .byecoin-page .byecoin-inner .bank-ingfo-area {
+        padding: 45px 20px 25px 20px
+    }
+}
+
+
+/* Landscape phones and portrait tablets */
+
+@media (max-width: 768px) {
+    .logo {
+        display: none;
+    }
+    .header-area .header-top-area .logo-area .mobile-logo {
+        display: block;
+    }
+}
+
+
+/* Landscape phones and portrait tablets */
+
+@media (max-width: 767px) {
+    .refferal-page-area .refferal-page-inner .invite-contact-area .share-link-area .form-group button {
+        top: 68px;
+    }
+    .profile-page-area .profile-inner .tab-content .idvarification-area .popup .popup-inner .popup-content {
+        padding: 30px 10px;
+    }
+    .profile-page-area .profile-inner .tab-content .idvarification-area .popup .popup-inner .popup-title {
+        padding: 10px 0 5px 30px;
+    }
+    .chart-area .chart-list .chart-inner .chart-top .chart-btn .popup .popup-inner .popup-title {
+        padding: 10px 0 5px 30px;
+    }
+    .refferal-page-area .refferal-page-inner .invite-contact-area .share-link-area .form-group button {
+        top: 40px;
+    }
+    .activity-list .dataTables_length {
+        float: none;
+    }
+    .activity-list .dataTables_filter {
+        float: none;
+    }
+}
+
+
+/* Landscape phones and smaller */
+
+@media (max-width: 480px) {
+    .refferal-page-area .refferal-page-inner .invite-contact-area .share-code-area .share-btn a.twitter {
+        margin-top: 20px;
+    }
+    .header-area .header-bottom-area .blance-area .single-balance {
+        margin-right: 50px;
+    }
+    .header-area .header-bottom-area .blance-area .single-balance.pending-balance {
+        margin-left: 0;
+        margin-top: 30px;
+    }
+    .security-area {
+        margin-top: 20px;
+    }
+    .profile-page-area .profile-inner .tab-content .profile-img-area .uplode-img .inputfile+label {
+        left: 50%;
+      transform: translateX(-50%);
+    }
+    .chart-btn.text-right {
+        text-align: left !important;
+        margin-top: 30px;
+    }
+    .chart-area .chart-list .chart-inner .chart-top .chart-btn a {
+        margin-left: 0;
+        margin-right: 10px;
+    }
+    .wallet-area .wallet-inner .wallet-content .wallet-top .tabe-menu .nav-tabs .nav-item .nav-link {
+        padding: 20px 0;
+        font-size: 18px;
+        margin-left: 15px;
+    }
+    .wallet-area .wallet-inner .wallet-content .wallet-top .tabe-menu .nav-tabs .nav-item .nav-link i::before {
+        margin-right: 0px;
+        font-size: 20px;
+    }
+    .wallet-area .wallet-inner .wallet-content .tab-content .tabcontent-right .form-group input {
+        width: 100%;
+        height: 64px;
+        line-height: 64px;
+    }
+    .wallet-area .wallet-inner .wallet-content .tab-content .tabcontent-right .form-group button {
+        height: 64px;
+        line-height: 64px;
+        width: 80px;
+    }
+    .nav-tabs .nav-item {
+        margin-bottom: -1px;
+        display: inline-block;
+        width: 50%;
+    }
+    .profile-page-area .profile-inner .profile-top-menu .tabe-menu .nav-tabs .nav-item .nav-link {
+        padding: 20px 10px;
+        margin-left: 0px;
+    }
+    .wallet-area .wallet-inner .wallet-content .wallet-top .tabe-menu .nav-tabs .nav-item .nav-link {
+        margin-left: 0px;
+        padding: 20px 10px;
+    }
+    .profile-page-area .profile-inner .profile-top-menu .tabe-menu .nav-tabs {
+        padding: 0px;
+    }
+    .refferal-page-area .refferal-page-inner .invite-contact-area .share-link-area .form-group button {
+        width: 85px;
+        height: 62px;
+        line-height: 62px;
+    }
+    .refferal-page-area .refferal-page-inner .invite-contact-area .share-link-area .form-group input {
+        padding-left: 100px;
+    }
+    .refferal-page-area {
+        padding-bottom: 60px;
+    }
+    .setting-page-area {
+        padding-bottom: 60px;
+    }
+    .profile-page-area {
+        padding-bottom: 60px;
+    }
+    .wallet-area {
+        padding-bottom: 60px;
+    }
+    .chart-area .chart-list .chart-inner .chart-top .chart-btn .popup .popup-inner .popup-content {
+        padding: 33px 0px 40px 00px;
+    }
+    .profile-page-area .profile-inner .tab-content .idvarification-area .card-type-list {
+        padding-bottom: 0px;
+    }
+    .dashbord-area {
+        padding-bottom: 60px;
+    }
+    .page-wraper {
+        padding: 30px 20px;
+    }
+    .refferal-page-area .refferal-page-inner .invite-contact-area .share-link-area .form-group button {
+        top: 68px;
+    }
+    .section-p {
+        padding: 15px;
+        background: #f5f5f5;
+        width: 260px;
+    }
+
+    .activity-list{
+      padding: 15px;
+    }
+    .header-area .header-bottom-area .page-title .title {
+       font-size: 25px;
+    }
+    .dataTables_paginate,
+    .dataTables_info {
+          text-align: center;
+          padding-top: 10px;
+      }
+      .header-area .header-bottom-area .blance-area .single-balance .balance {
+          font-size: 16px;
+       }
+
+      .google-authetication-content .primary-btn{
+         font-weight: 600!important;
+      }
+      .chart-area .chart-list .chart-inner .chart-top {
+          padding: 45px 15px 5px 15px;
+       }
+}
+
+@media (max-width: 375px) {
+    .activity-right.acsmrightbtn {
+        text-align: left !important;
+        margin-top: 20px;
+    }
+    .wallet-area .wallet-inner .wallet-content .tab-content .activity-area .activity-top-area .activity-right ul li {
+        margin-left: 0;
+        margin-right: 30px;
+    }
+    .profile-page-area .profile-inner .tab-content .profile-img-area .uplode-img .inputfile+label {
+        left: 50%;
+        width: 185px;
+      transform: translateX(-50%);
+    }
+    .setting-page-area .setting-page-inner .preference-settinga .primary-btn {
+        width: 100%;
+    }
+    .refferal-page-area .refferal-page-inner .invite-contact-area .share-link-area .form-group button {
+        top: 68px;
+    }
+    .header-area .header-top-area .profile-area ul li.profile-menu a {
+          font-size: 0;
+   }
+   .header-area .header-top-area .profile-area ul li.profile-menu a i{
+      font-size: 17px;
+   }
+
+}
+
+@media (max-width: 320px) {
+    .refferal-page-area .refferal-page-inner .invite-contact-area .share-link-area .form-group button {
+        top: 68px;
+    }
+    .section-p {
+        padding: 15px;
+        background: #f5f5f5;
+        width: 260px;
+    }
+}
