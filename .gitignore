@@ -6,6 +6,7 @@
 /public/uploaded_file
 .env
 .phpunit.result.cache
+/vendor
 Homestead.json
 Homestead.yaml
 npm-debug.log
