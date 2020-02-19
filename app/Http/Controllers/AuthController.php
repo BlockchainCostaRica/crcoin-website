@@ -27,13 +27,15 @@ use PragmaRX\Google2FA\Google2FA;
 class AuthController extends Controller
 {
     // sign up
-    public function signup(Request $request) {
+    public function signup(Request $request)
+    {
         $data['referral_user'] = $request->id;
-        return view('auth.register',$data);
+        return view('auth.register', $data);
     }
 
     // login
-    public function login() {
+    public function login()
+    {
         if (Auth::user()) {
             if (Auth::user()->type == USER_ROLE_ADMIN) {
                 return redirect()->route('AdminDashboard');
@@ -52,11 +54,12 @@ class AuthController extends Controller
         $data['message'] = '';
         $user = User::where('email', $request->email)->first();
 
-        if(!empty($user)){
-            if(empty($user->email_verified_at))
+        if (!empty($user)) {
+            if (empty($user->email_verified_at)) {
                 $user->email_verified_at =  0;
+            }
 
-            if(($user->type == USER_ROLE_ADMIN) || ($user->type == USER_ROLE_USER)) {
+            if (($user->type == USER_ROLE_ADMIN) || ($user->type == USER_ROLE_USER)) {
                 if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
                     //Check email verification
                     if ($user->status == STATUS_SUCCESS) {
@@ -66,16 +69,16 @@ class AuthController extends Controller
                             $data['message'] = __('Login successful');
                             //  return redirect()->back()->with('success',$data['message']);
                             if (Auth::user()->type == USER_ROLE_ADMIN) {
-                                return redirect()->route('AdminDashboard')->with('success',$data['message']);
+                                return redirect()->route('AdminDashboard')->with('success', $data['message']);
                             } else {
-                                return redirect()->route('UserDashboard')->with('success',$data['message']);
+                                return redirect()->route('UserDashboard')->with('success', $data['message']);
                             }
                         } else {
-                            $existsToken = User::join('user_verification_codes','user_verification_codes.user_id','users.id')
-                                ->where('user_verification_codes.user_id',$user->id)
-                                ->whereDate('user_verification_codes.expired_at' ,'>=', Carbon::now()->format('Y-m-d'))
+                            $existsToken = User::join('user_verification_codes', 'user_verification_codes.user_id', 'users.id')
+                                ->where('user_verification_codes.user_id', $user->id)
+                                ->whereDate('user_verification_codes.expired_at', '>=', Carbon::now()->format('Y-m-d'))
                                 ->first();
-                            if(!empty($existsToken)) {
+                            if (!empty($existsToken)) {
                                 $mail_key = $existsToken->code;
                             } else {
                                 $mail_key = randomNumber(6);
@@ -93,47 +96,46 @@ class AuthController extends Controller
                                 $data['message'] = __('Your email is not verified yet. Please verify your mail.');
                                 Auth::logout();
 
-                                return redirect()->back()->with('dismiss',$data['message']);
+                                return redirect()->back()->with('dismiss', $data['message']);
                             } catch (\Exception $e) {
                                 $data['success'] = false;
                                 $data['message'] = $e->getMessage();
                                 Auth::logout();
 
-                                return redirect()->back()->with('dismiss',$data['message']);
+                                return redirect()->back()->with('dismiss', $data['message']);
                             }
                         }
                     } elseif ($user->status == STATUS_SUSPENDED) {
                         $data['success'] = false;
                         $data['message'] = __("Your account has been suspended. please contact support team to active again");
                         Auth::logout();
-                        return redirect()->back()->with('dismiss',$data['message']);
+                        return redirect()->back()->with('dismiss', $data['message']);
                     } elseif ($user->status == STATUS_DELETED) {
                         $data['success'] = false;
                         $data['message'] = __("Your account has been deleted. please contact support team to active again");
                         Auth::logout();
-                        return redirect()->back()->with('dismiss',$data['message']);
+                        return redirect()->back()->with('dismiss', $data['message']);
                     } elseif ($user->status == STATUS_PENDING) {
                         $data['success'] = false;
                         $data['message'] = __("Your account has been pending for admin approval. please contact support team to active again");
                         Auth::logout();
-                        return redirect()->back()->with('dismiss',$data['message']);
+                        return redirect()->back()->with('dismiss', $data['message']);
                     }
-
                 } else {
                     $data['success'] = false;
                     $data['message'] = __("Email or Password doesn't match");
-                    return redirect()->back()->with('dismiss',$data['message']);
+                    return redirect()->back()->with('dismiss', $data['message']);
                 }
             } else {
                 $data['success'] = false;
                 $data['message'] = __("You have no login access");
                 Auth::logout();
-                return redirect()->back()->with('dismiss',$data['message']);
+                return redirect()->back()->with('dismiss', $data['message']);
             }
         } else {
             $data['success'] = false;
             $data['message'] = __("You have no account,please register new account");
-            return redirect()->back()->with('dismiss',$data['message']);
+            return redirect()->back()->with('dismiss', $data['message']);
         }
     }
 
@@ -173,8 +175,9 @@ class AuthController extends Controller
             ]);
             UserVerificationCode::create(['user_id' => $user->id, 'code' => $mail_key, 'status' => STATUS_PENDING, 'expired_at' => date('Y-m-d', strtotime('+15 days'))]);
 
-            if (!empty($request->referral_user))
+            if (!empty($request->referral_user)) {
                 Referral::insert(['user_id' => $user->id, 'parent_user_id' => decrypt($request->referral_user), 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()]);
+            }
 
             Wallet::create([
                 'user_id' => $user->id,
@@ -193,12 +196,11 @@ class AuthController extends Controller
         } catch (\Exception $e) {
             DB::rollback();
         }
-        if (!empty($user)){
+        if (!empty($user)) {
             $this->sendVerifyemail($user, $mail_key);
-            return redirect()->route('login')->with('success',__('Email send successful,please verify your email'));
-
+            return redirect()->route('login')->with('success', __('Email send successful,please verify your email'));
         } else {
-            return redirect()->back()->with('dismiss',__('Something went wrong'));
+            return redirect()->back()->with('dismiss', __('Something went wrong'));
         }
     }
 
@@ -222,7 +224,8 @@ class AuthController extends Controller
     }
 
     // logout
-    public function logout(){
+    public function logout()
+    {
         Session::forget('g2f_checked');
         Auth::logout();
         return redirect()->route('login');
@@ -246,14 +249,13 @@ class AuthController extends Controller
                 try {
                     if ($check) {
                         UserVerificationCode::where(['user_id' => $user->id])->delete();
-                        return redirect(url('login'))->with('success',__('Verify successful,you can login now'));
+                        return redirect(url('login'))->with('success', __('Verify successful,you can login now'));
                     }
                 } catch (\Exception $e) {
-
                 }
             } else {
                 Auth::logout();
-                return redirect(url('login'))->with('dismiss',__('Your verify token was expired,you can generate new token'));
+                return redirect(url('login'))->with('dismiss', __('Your verify token was expired,you can generate new token'));
             }
         }
     }
@@ -277,16 +279,16 @@ class AuthController extends Controller
     {
         $rules = ['email' => 'required|email'];
         $messages = ['email.required' => _('Email field can not be empty'), 'email.email' => __('Email is invalid')];
-        $validatedData = $request->validate($rules,$messages);
+        $validatedData = $request->validate($rules, $messages);
         $user = User::where(['email' => $request->email])->first();
 
         if ($user) {
             $key = randomNumber(6);
-            $existsToken = User::join('user_verification_codes','user_verification_codes.user_id','users.id')
-                ->where('user_verification_codes.user_id',$user->id)
-                ->whereDate('user_verification_codes.expired_at' ,'>=', Carbon::now()->format('Y-m-d'))
+            $existsToken = User::join('user_verification_codes', 'user_verification_codes.user_id', 'users.id')
+                ->where('user_verification_codes.user_id', $user->id)
+                ->whereDate('user_verification_codes.expired_at', '>=', Carbon::now()->format('Y-m-d'))
                 ->first();
-            if(!empty($existsToken)) {
+            if (!empty($existsToken)) {
                 $token = $existsToken->code;
             } else {
                 UserVerificationCode::create(['user_id' => $user->id, 'code'=>$key,'expired_at' => date('Y-m-d', strtotime('+15 days')), 'status' => STATUS_PENDING]);
@@ -309,14 +311,12 @@ class AuthController extends Controller
                 $data['success'] = true;
                 Session::put(['resend_email'=>$user->email]);
 
-                return redirect(route('resetPasswordPage'))->with('success',$data['message']);
+                return redirect(route('resetPasswordPage'))->with('success', $data['message']);
             } catch (\Exception $e) {
-
                 return redirect()->back()->with('dismiss', __('Something went wrong. Please check mail credential.'));
             }
-
         } else {
-            return redirect()->back()->with('dismiss',__('Email not found'));
+            return redirect()->back()->with('dismiss', __('Email not found'));
         }
     }
 
@@ -344,7 +344,7 @@ class AuthController extends Controller
             'password.regex' => __('Password must consist of one uppercase, one lowercase and one number'),
             'password_confirmation.required' => __('Confirm password can\'t be empty'),
             'password.min' => __('Password can\'t be less then 8 character'),
-            'password_confirmation.same' =>__( 'Confirm password must be same as password'),
+            'password_confirmation.same' =>__('Confirm password must be same as password'),
         ];
 
         $this->validate($request, $rules, $customMessages);
@@ -354,30 +354,24 @@ class AuthController extends Controller
         if (!empty($vf_code)) {
             $data_ins['password'] = hash::make($request->password);
             $data_ins['is_verified'] = STATUS_SUCCESS;
-            if(!Hash::check($request->password,User::find($vf_code->user_id)->password)) {
-
+            if (!Hash::check($request->password, User::find($vf_code->user_id)->password)) {
                 User::where(['id' => $vf_code->user_id])->update($data_ins);
                 UserVerificationCode::where(['id' => $vf_code->id])->delete();
 
                 $data['success'] = 'success';
                 $data['message'] = __('Password Reset Successfully');
-
-
             } else {
                 $data['success'] = 'dismiss';
                 $data['message'] = __('You already used this password');
-                return redirect()->back()->with($data['success'],$data['message']);
+                return redirect()->back()->with($data['success'], $data['message']);
             }
-
         } else {
-
             $data['success'] = 'dismiss';
             $data['message'] = __('Invalid code');
 
             return redirect()->back()->with('dismiss', __('Invalid code'));
         }
-        return redirect(url('login'))->with($data['success'],$data['message']);
-
+        return redirect(url('login'))->with($data['success'], $data['message']);
     }
 
     public function changePasswordSave(resetPasswordRequest $request)
@@ -385,13 +379,14 @@ class AuthController extends Controller
         $service = new AuthService();
         $change = $service->changePassword($request);
         if ($change['success']) {
-            return redirect()->back()->with('success',$change['message']);
+            return redirect()->back()->with('success', $change['message']);
         } else {
-            return redirect()->back()->with('dismiss',$change['message']);
+            return redirect()->back()->with('dismiss', $change['message']);
         }
     }
 
-    public function ContactUs(ContactUs $request){
+    public function ContactUs(ContactUs $request)
+    {
         $user_data = $request->all();
         Mail::send('email.contactUs', $user_data, function ($message) use ($user_data) {
             $message->to(settings('primary_email'), $user_data['name'])->from(settings('mail_from'), settings('company_name'))->subject(__('Contact us'));
@@ -399,7 +394,7 @@ class AuthController extends Controller
         $data['message'] = __('Mail sent Successfully .admin contact with you very soon');
         $data['success'] = true;
 
-        return redirect()->back()->with('success',$data);
+        return redirect()->back()->with('success', $data);
     }
 
     public function g2fChecked(Request $request)
@@ -407,17 +402,16 @@ class AuthController extends Controller
         return view('auth.g2f');
     }
 
-    public function g2fVerify(g2fverifyRequest $request){
-
+    public function g2fVerify(g2fverifyRequest $request)
+    {
         $google2fa = new Google2FA();
         $google2fa->setAllowInsecureCallToGoogleApis(true);
         $valid = $google2fa->verifyKey(Auth::user()->google2fa_secret, $request->code, 8);
 
-        if ($valid){
-            Session::put('g2f_checked',true);
-            return redirect()->route('UserDashboard')->with('success',__('Login successful'));
+        if ($valid) {
+            Session::put('g2f_checked', true);
+            return redirect()->route('UserDashboard')->with('success', __('Login successful'));
         }
-        return redirect()->back()->with('dismiss',__('Pin code doesn\'t match'));
-
+        return redirect()->back()->with('dismiss', __('Pin code doesn\'t match'));
     }
 }

@@ -6,7 +6,7 @@
  * Time: 1:37 PM
  */
 
-Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>['auth.user','admin.role.check']],function (){
+Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>['auth.user','admin.role.check']], function () {
     Route::get('/dashboard', 'DeshboardController@index')->name('AdminDashboard');
     Route::get('/profile', 'DeshboardController@adminProfile')->name('adminProfile');
     Route::get('/users', 'UserController@index')->name('admin.users');
@@ -102,4 +102,7 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>['auth.user',
     Route::get('bank-delete-{id}', 'BankController@bankDelete')->name('bankDelete');
     Route::post('bank-add-process', 'BankController@bankAddProcess')->name('bankAddProcess');
 
+    // Aweber
+    Route::get('aweber', 'SettingController@aweberAuthorize');
+    Route::get('aweber_callback', 'SettingController@aweberAuthorizeCallback');
 });

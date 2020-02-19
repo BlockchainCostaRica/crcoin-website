@@ -29,6 +29,9 @@
                                     <li><a class=" @if(isset($tab) && $tab=='wdrl') active @endif nav-link"
                                            data-toggle="pill" role="tab" data-controls="withdrawl_settings"
                                            href="#withdrawl_settings"></span>{{__('Withdrawal Settings')}}</a></li>
+                                    <li><a class=" @if(isset($tab) && $tab=='aweber') active @endif nav-link"
+                                            data-toggle="pill" role="tab" data-controls="aweber_settings"
+                                            href="#withdrawl_settings"></span>{{__('Aweber Settings')}}</a></li>
                                 </ul>
                                 <div class="tab-content tab-pt-n" id="tabContent">
                                     <!-- genarel-setting start-->
@@ -490,6 +493,26 @@
                                         </div>
                                         <!-- Send Coin Limit Settings end-->
                                     </div>
+                                    
+                                    <div class="tab-pane fade @if(isset($tab) && $tab=='aweber')show active @endif" id="aweber_settings">
+                                      <div class="form-area">
+                                        <div class="userlist-wrap custom-wrapper custom-wrapper-2 form-style">
+                                          <h4>{{__('Aweber Oauth2')}}</h4>
+                                          <label for="#">{{__('Authorize expire in:')}}</label>
+                                          <div class="row">
+                                            <div class="col-lg-6 col-12">
+                                              <div class="form-group">
+                                                {{$settings['aweber_expire_in']}}
+                                              </div>
+                                            </div>
+                                            <div class="col-lg-2 col-12">
+                                              <a href="/admin/aweber" class="button-primary">{{__('Authorize')}}</a>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+
                                     <div class="tab-pane fade" id="coins">
                                         <div class=" form-style">
                                             <h4>{{__('Coin List')}}</h4>

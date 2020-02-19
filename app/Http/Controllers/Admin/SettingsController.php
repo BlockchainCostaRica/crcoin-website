@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use App\Helper\AweberProvider;
 
 class SettingsController extends Controller
 {
@@ -20,7 +21,7 @@ class SettingsController extends Controller
             $data['itech'] = 'itech';
         }
         $data['tab']='general';
-        if(isset($_GET['tab'])){
+        if (isset($_GET['tab'])) {
             $data['tab']=$_GET['tab'];
         }
         if ($request->ajax()) {
@@ -33,7 +34,6 @@ class SettingsController extends Controller
                     return !empty($c->created_at)?$c->created_at:'N/A';
                 })
                 ->make(true);
-
         }
         $data['base_coins'] = [];
         $data['settings'] = allsetting();
@@ -95,7 +95,7 @@ class SettingsController extends Controller
                     AdminSetting::where('slug', 'btc_coin_api_port')->update(['value' => $request->btc_coin_api_port]);
                 }
 
-                return redirect()->route('adminSettings',['tab'=>'api'])->with(['success' => __('Coin Api information updated successfully!')]);
+                return redirect()->route('adminSettings', ['tab'=>'api'])->with(['success' => __('Coin Api information updated successfully!')]);
             } else {
                 return redirect()->back()->with(['dismiss' => __('You are not authorised to perform this operation!')]);
             }
@@ -143,7 +143,7 @@ class SettingsController extends Controller
                     AdminSetting::where('slug', 'clickatell_api_key')->update(['value' => $request->clickatell_api_key]);
                 }
 
-                return redirect()->route('adminSettings',['tab'=>'sms'])->with(['success' => __('Sms information updated successfully!')]);
+                return redirect()->route('adminSettings', ['tab'=>'sms'])->with(['success' => __('Sms information updated successfully!')]);
             } else {
                 return redirect()->back()->with(['dismiss' => __('You are not authorised to perform this operation!')]);
             }
@@ -189,7 +189,7 @@ class SettingsController extends Controller
                     AdminSetting::where('slug', 'braintree_private_key')->update(['value' => $request->braintree_private_key]);
                 }
 
-                return redirect()->route('adminSettings',['tab'=>'braintree'])->with(['success' => __('Braintree Api information updated successfully!')]);
+                return redirect()->route('adminSettings', ['tab'=>'braintree'])->with(['success' => __('Braintree Api information updated successfully!')]);
             } else {
                 return redirect()->back()->with(['dismiss' => __('You are not authorised to perform this operation!')]);
             }
@@ -201,19 +201,19 @@ class SettingsController extends Controller
     {
         $rules=[];
 //        $messages=[];
-        if(!empty($request->logo)){
+        if (!empty($request->logo)) {
             $rules['logo']='image|mimes:jpg,jpeg,png|max:2000';
         }
-        if(!empty($request->favicon)){
+        if (!empty($request->favicon)) {
             $rules['favicon']='image|mimes:jpg,jpeg,png|max:2000';
         }
-        if(!empty($request->login_logo)){
+        if (!empty($request->login_logo)) {
             $rules['login_logo']='image|mimes:jpg,jpeg,png|max:2000';
         }
-        if(!empty($request->coin_price)){
+        if (!empty($request->coin_price)) {
             $rules['coin_price']='numeric';
         }
-        if(!empty($request->number_of_confirmation)){
+        if (!empty($request->number_of_confirmation)) {
             $rules['number_of_confirmation']='integer';
         }
 
@@ -238,14 +238,13 @@ class SettingsController extends Controller
                         AdminSetting::where('slug', 'coin_price')->update(['value' => $request->coin_price]);
                     }
                     if (isset($request->logo)) {
-
-                        AdminSetting::where('slug', 'logo')->update(['value' => uploadFile($request->logo,IMG_PATH,allsetting()['logo'])]);
+                        AdminSetting::where('slug', 'logo')->update(['value' => uploadFile($request->logo, IMG_PATH, allsetting()['logo'])]);
                     }
                     if (isset($request->favicon)) {
-                        AdminSetting::where('slug', 'favicon')->update(['value' => uploadFile($request->favicon,IMG_PATH,allsetting()['favicon'])]);
+                        AdminSetting::where('slug', 'favicon')->update(['value' => uploadFile($request->favicon, IMG_PATH, allsetting()['favicon'])]);
                     }
                     if (isset($request->login_logo)) {
-                        AdminSetting::where('slug', 'login_logo')->update(['value' => uploadFile($request->login_logo,IMG_PATH,allsetting()['login_logo'])]);
+                        AdminSetting::where('slug', 'login_logo')->update(['value' => uploadFile($request->login_logo, IMG_PATH, allsetting()['login_logo'])]);
                     }
                     if (isset($request->company_name)) {
                         AdminSetting::where('slug', 'company_name')->update(['value' => $request->company_name]);
@@ -288,10 +287,9 @@ class SettingsController extends Controller
                     return redirect()->back()->with(['dismiss' => __('You are not authorised to perform this operation!')]);
                 }
             }
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             return redirect()->back()->with(['dismiss' => $e->getMessage()]);
         }
-
     }
 
     // fees setting save process
@@ -309,7 +307,7 @@ class SettingsController extends Controller
                     AdminSetting::where('slug', 'send_fees_percentage')->update(['value' => $request->send_fees_percentage]);
                 }
 
-                return redirect()->route('adminSettings',['tab'=>'fee'])->with(['success' => __('Withdrawal Fees information updated successfully!')]);
+                return redirect()->route('adminSettings', ['tab'=>'fee'])->with(['success' => __('Withdrawal Fees information updated successfully!')]);
             } else {
                 return redirect()->back()->with(['dismiss' => __('You are not authorised to perform this operation!')]);
             }
@@ -321,7 +319,6 @@ class SettingsController extends Controller
     {
         if ($request->post()) {
             if (isset(Auth::user()->id) && (Auth::user()->type == USER_ROLE_ADMIN)) {
-
                 if (isset($request->max_affiliation_level)) {
                     AdminSetting::updateOrCreate(['slug' => 'max_affiliation_level'], ['value' => $request->max_affiliation_level]);
                 }
@@ -356,7 +353,7 @@ class SettingsController extends Controller
                     AdminSetting::updateOrCreate(['slug' => 'fees_level10'], ['value' => $request->fees_level10]);
                 }
 
-                return redirect()->route('adminSettings',['tab'=>'fee'])->with(['success' => __('Referral Fees information updated successfully!')]);
+                return redirect()->route('adminSettings', ['tab'=>'fee'])->with(['success' => __('Referral Fees information updated successfully!')]);
             } else {
                 return redirect()->back()->with(['dismiss' => __('You are not authorised to perform this operation!')]);
             }
@@ -372,7 +369,7 @@ class SettingsController extends Controller
                     AdminSetting::where('slug', 'max_send_limit')->update(['value' => $request->max_send_limit]);
                 }
 
-                return redirect()->route('adminSettings',['tab'=>'wdrl'])->with(['success' => __('updated successfully!')]);
+                return redirect()->route('adminSettings', ['tab'=>'wdrl'])->with(['success' => __('updated successfully!')]);
             } else {
                 return redirect()->back()->with(['dismiss' => __('You are not authorised to perform this operation!')]);
             }
@@ -416,15 +413,15 @@ class SettingsController extends Controller
     public function adminCustomPageList(Request $request)
     {
         if ($request->ajax()) {
-            $cp = CustomPages::select('id', 'title', 'key', 'description', 'status', 'created_at')->orderBy('data_order','ASC');
+            $cp = CustomPages::select('id', 'title', 'key', 'description', 'status', 'created_at')->orderBy('data_order', 'ASC');
             return datatables($cp)
                 ->addColumn('actions', function ($item) {
                     $html = '<input type="hidden" value="'.$item->id.'" class="shortable_data">';
                     $html .= '<ul class="d-flex activity-menu">';
 
-                        $html .= ' <li class="viewuser"><a title="Edit" href="' . route('adminCustomPageSettingEdit', $item->id) . '"><i class="fa fa-pencil"></i></a> <span></span></li>';
-                       $html .= delete_html('adminCustomPageSettingDelete',encrypt($item->id));
-                       $html .=' </ul>';
+                    $html .= ' <li class="viewuser"><a title="Edit" href="' . route('adminCustomPageSettingEdit', $item->id) . '"><i class="fa fa-pencil"></i></a> <span></span></li>';
+                    $html .= delete_html('adminCustomPageSettingDelete', encrypt($item->id));
+                    $html .=' </ul>';
                     return $html;
                 })
                 ->rawColumns(['actions'])->make(true);
@@ -503,12 +500,12 @@ class SettingsController extends Controller
     // change custom page order
     public function customPageOrder(Request $request)
     {
-      $vals = explode(',',$request->vals);
-      foreach ($vals as $key => $item){
-         CustomPages::where('id',$item)->update(['data_order'=>$key]);
-      }
+        $vals = explode(',', $request->vals);
+        foreach ($vals as $key => $item) {
+            CustomPages::where('id', $item)->update(['data_order'=>$key]);
+        }
 
-      return response()->json(['message'=>__('Page ordered change successfully')]);
+        return response()->json(['message'=>__('Page ordered change successfully')]);
     }
 
 
@@ -517,7 +514,8 @@ class SettingsController extends Controller
      ***************************************************************************************/
 
     // Faq List
-    public function adminFaqList(Request $request){
+    public function adminFaqList(Request $request)
+    {
         if ($request->ajax()) {
             $data['items'] = Faq::orderBy('priority', 'asc');
             return datatables()->of($data['items'])
@@ -536,13 +534,15 @@ class SettingsController extends Controller
     }
 
     // View Add new faq page
-    public function adminFaqAdd(){
+    public function adminFaqAdd()
+    {
         $data['title']=__('Add FAQs');
-        return view('Admin.faq.addEdit',$data);
+        return view('Admin.faq.addEdit', $data);
     }
 
     // Create New faq
-    public function adminFaqSave(Request $request){
+    public function adminFaqSave(Request $request)
+    {
         $rules=[
             'question'=>'required',
             'answer'=>'required',
@@ -569,29 +569,55 @@ class SettingsController extends Controller
             ,'answer'=>$request->answer
             ,'priority'=>$request->priority
         ];
-        if(!empty($request->edit_id)){
+        if (!empty($request->edit_id)) {
             Faq::where(['id'=>$request->edit_id])->update($data);
             return redirect()->route('adminFaqList')->with(['success'=>__('Faq Updated Successfully!')]);
-        }else{
+        } else {
             Faq::create($data);
             return redirect()->route('adminFaqList')->with(['success'=>__('Faq Added Successfully!')]);
         }
     }
 
     // Edit Faqs
-    public function adminFaqEdit($id){
+    public function adminFaqEdit($id)
+    {
         $data['title']=__('Update FAQs');
         $data['item']=Faq::findOrFail($id);
 
-        return view('backend.admin.faq.addEdit',$data);
+        return view('backend.admin.faq.addEdit', $data);
     }
 
     // Delete Faqs
-    public function adminFaqDelete($id){
-        if(isset($id)){
+    public function adminFaqDelete($id)
+    {
+        if (isset($id)) {
             Faq::where(['id'=>$id])->delete();
         }
 
         return redirect()->back()->with(['success'=>__('Deleted Successfully!')]);
+    }
+
+    public function aweberAuthorize()
+    {
+        $aweberProvider = new AweberProvider();
+
+        $authorizationUrl = $aweberProvider->getAuthorizationUrl();
+
+        return redirect($authorizationUrl);
+    }
+
+    public function aweberAuthorizeCallback(Request $request)
+    {
+        $aweberProvider = new AweberProvider();
+
+        $accessToken = $aweberProvider->getAccessToken('authorization_code', [
+            'code' => $request->input('code')
+        ]);
+
+        AdminSetting::where('slug', 'aweber_access_token')->update(['value' => $accessToken->getToken()]);
+        AdminSetting::where('slug', 'aweber_expire_in')->update(['value' => $accessToken->getExpires()]);
+        AdminSetting::where('slug', 'aweber_refresh_token')->update(['value' => $accessToken->getRefreshToken()]);
+
+        return redirect('/admin/settings');
     }
 }

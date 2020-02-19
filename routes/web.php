@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::group(['middleware'=> 'installation'],function () {
+Route::group(['middleware'=> 'installation'], function () {
     include 'users.php';
     include 'admin.php';
 
@@ -14,7 +14,6 @@ Route::group(['middleware'=> 'installation'],function () {
     Route::get('terms-and-condition', 'HomeController@termsAndCondition')->name('termsAndCondition');
 
     Route::group([], function () {
-
         Route::get('login', 'AuthController@login')->name('login');
         Route::get('forgot-password', 'AuthController@forgotPassword')->name('forgotPassword');
         Route::get('signup', 'AuthController@signup')->name('signup');
@@ -30,14 +29,11 @@ Route::group(['middleware'=> 'installation'],function () {
         Route::post('/g2f-verify', 'AuthController@g2fVerify')->name('g2fVerify');
         Route::get('/user/logout', 'AuthController@logout')->name('logoutUser');
         Route::post('/contact-us', 'AuthController@ContactUs')->name('ContactUs');
-
     });
+
     Route::get('/transaction-histories', 'TransactionController@transactionHistories')->name('transactionHistories')->middleware('auth.user');
 
-//    Auth::routes();
+    // Auth::routes();
     // Referral Registration
     Route::get('referral-reg', 'User\ReferralController@signup')->name('referral.registration');
-
-
 });
-
