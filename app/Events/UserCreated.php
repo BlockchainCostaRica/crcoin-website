@@ -18,15 +18,15 @@ class UserCreated
     public function __construct(User $user)
     {
         $this->user = $user;
-
-        $aweberProvider = new AweberProvider();
+        $client = new GuzzleHttp\Client();
         $accessToken = AdminSetting::whereIn('aweber_access_token', $array)->get();
-
-        $response = $aweberProvider->getAuthenticatedRequest(
-            'POST',
-            'https://api.aweber.com/1.0/accounts/'. env('AWEBER_ACCOUNT_ID') .'/lists/'. env('AWEBER_LIST_ID') .'/subscribers',
-            ['access_token' => $accessToken],
-            json_encode(['email' => $this->user->email])
-        );
+        $subsUrl = 'https://api.aweber.com/1.0/accounts/'. env('AWEBER_ACCOUNT_ID') .'/lists/'. env('AWEBER_LIST_ID') .'/subscribers';
+        
+        $client->post($subsUrl, [
+            'json' =>  array(
+                'email' => $this->user->email,
+            ),
+            'headers' => ['Authorization' => 'Bearer ' . $accessToken]
+        ]);
     }
 }
